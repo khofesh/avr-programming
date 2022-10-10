@@ -67,6 +67,12 @@ avrdude: safemode: Fuses OK (E:00, H:00, L:00)
 avrdude done.  Thank you.
 ```
 
+## Complex Makefile
+
+```shell
+make flash_usbasp
+```
+
 ## References
 
 - https://fedoraproject.org/wiki/Packages_For_Embedded_Development

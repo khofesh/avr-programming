@@ -142,6 +142,14 @@ avrdude: safemode: Fuses OK (E:FF, H:DE, L:FF)
 avrdude done.  Thank you.
 ```
 
+## 168 and 328
+
+https://docs.arduino.cc/hacking/hardware/Atmega168Hardware
+
+https://docs.arduino.cc/hacking/hardware/ATMEGA328P
+
+https://docs.arduino.cc/hacking/hardware/PinMapping168
+
 ## references
 
 - https://wiki.archlinux.org/title/Udev
