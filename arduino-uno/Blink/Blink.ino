@@ -25,13 +25,20 @@
 // the setup function runs once when you press reset or power the board
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
-  pinMode(LED_BUILTIN, OUTPUT);
+  // pinMode(LED_BUILTIN, OUTPUT);
+  DDRB = 32;
 }
 
 // the loop function runs over and over again forever
 void loop() {
   PORTB = 32;
-  delay(2000);                       // wait for a second
+  // delay(2000);                       // wait for a second
+  for (long i=0; i < 1000000; i++) {
+    PORTB = 32;
+  }  
   PORTB = 0;
-  delay(500);                       // wait for a second
+  // delay(500);                       // wait for a second
+  for (long i=0; i < 1000000; i++) {
+    PORTB = 0;
+  }
 }
