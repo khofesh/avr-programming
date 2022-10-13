@@ -83,7 +83,7 @@ reload
 udevadm control --reload
 ```
 
-### Errors
+### Warning: cannot set sck period
 
 ```shell
 [fahmad@ryzen ~]$  avrdude -cusbasp -pm328p -Pusb
@@ -100,6 +100,14 @@ avrdude: safemode: Fuses OK (E:FD, H:DE, L:FF)
 avrdude done.  Thank you.
 
 ```
+
+solder header pin on JP2 and connect the two of them
+
+![header pin soldered](./images/photo1665663471.jpeg)
+
+connect the first usbasp to the second usbasp
+
+![two usbasp](./images/connect_two_usbasp.jpeg)
 
 update firmware
 
