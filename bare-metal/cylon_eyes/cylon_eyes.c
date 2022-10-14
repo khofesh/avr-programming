@@ -10,8 +10,8 @@
 int main(void)
 {
     uint8_t i = 0;
-    // set up all of LED pins for output
-    DDRB = 0xff;
+    // set up PB0-PB5 of LED pins for output
+    DDRB = 0b00111111;
 
     while (1)
     {
