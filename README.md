@@ -74,13 +74,33 @@ sudo vim /etc/udev/rules.d/99-USBasp.rules
 add the following
 
 ```shell
-SUBSYSTEM=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05dc", GROUP="dialout"
+# USBasp - USB programmer for Atmel AVR controllers
+# Copy this file to /etc/udev/rules.d so
+
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", SYSFS{idVendor}=="16c0", SYSFS{idProduct}=="05dc", MODE="0666", GROUP="dialout"
 ```
 
 reload
 
 ```shell
 udevadm control --reload
+```
+
+try talking to the programmer directly
+
+```shell
+[fahmad@ryzen avr-programming]$  avrdude -p atmega328p -c usbasp
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f (probably lgt8fx328p)
+
+avrdude: safemode: Fuses OK (E:FD, H:DE, L:FF)
+
+avrdude done.  Thank you.
+
 ```
 
 ### Warning: cannot set sck period
