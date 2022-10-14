@@ -2,10 +2,13 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+#define DELAYTIME 500
+
 void pov_display(uint8_t oneByte);
 
 int main(void)
 {
+    // set up all of LED pins for output
     DDRB = 0xff;
 
     while (1)
@@ -23,7 +26,7 @@ int main(void)
         pov_display(0b00001110);
 
         PORTB = 0;
-        _delay_ms(1000);
+        _delay_ms(DELAYTIME);
     }
 
     return 0;
@@ -32,5 +35,5 @@ int main(void)
 void pov_display(uint8_t oneByte)
 {
     PORTB = oneByte;
-    _delay_ms(1000);
+    _delay_ms(DELAYTIME);
 }
