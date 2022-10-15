@@ -4,7 +4,7 @@
 #include <avr/power.h>
 #include "bare_metal.h"
 
-#define DELAYTIME 100
+#define DELAYTIME 200
 #define LED_PORT PORTB
 #define LED_DDR DDRB
 
