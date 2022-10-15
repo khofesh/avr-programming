@@ -73,6 +73,11 @@ avrdude done.  Thank you.
 make flash_usbasp
 ```
 
+## serial I/O
+
+- https://github.com/johncobb/avr_328p_usart
+- https://github.com/xanthium-enterprises/atmega328p-serial-uart-to-pc-communication
+
 # Components
 
 - 100 nF (0.1 μF) capacitor
