@@ -1,4 +1,4 @@
-## AVR
+# AVR
 
 ```shell
 [fahmad@ryzen arduino-uno]$  dnf search avr
@@ -73,7 +73,19 @@ avrdude done.  Thank you.
 make flash_usbasp
 ```
 
-## References
+# Components
+
+- 100 nF (0.1 μF) capacitor
+- 10 nF to 1 uF
+- LED
+- resistor: 200 - 500 ohms
+- 2N7000 MOSFET
+- A speaker with a DC-blocking capacitor
+  around 10 uF
+- A USB-Serial adapter
+- light-dependent resistors (LDR)
+
+# References
 
 - https://fedoraproject.org/wiki/Packages_For_Embedded_Development
 - https://www.hackster.io/milanistef/introduction-to-bare-metal-programming-in-arduino-uno-f3e2b4
