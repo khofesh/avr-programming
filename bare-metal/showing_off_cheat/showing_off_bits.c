@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/power.h>
+#include "bare_metal.h"
 
 #define DELAYTIME 100
 #define LED_PORT PORTB
@@ -25,27 +26,27 @@ int main(void)
         for (i = 0; i < 7; i++)
         {
             // turn on the i-th pin
-            LED_PORT |= (1 << i);
+            setBit(LED_PORT, 1);
             _delay_ms(DELAYTIME);
         }
 
         for (i = 0; i < 7; i++)
         {
             // turn off the i-th pin
-            LED_PORT &= ~(1 << i);
+            clearBit(LED_PORT, 1);
             _delay_ms(DELAYTIME);
         }
         _delay_ms(5 * DELAYTIME);
 
         for (i = 7; i < 63; i--)
         {
-            LED_PORT |= (1 << i);
+            setBit(LED_PORT, 1);
             _delay_ms(DELAYTIME);
         }
 
         for (i = 7; i < 63; i--)
         {
-            LED_PORT &= ~(1 << i);
+            clearBit(LED_PORT, 1);
             _delay_ms(DELAYTIME);
         }
         _delay_ms(5 * DELAYTIME);
@@ -59,7 +60,7 @@ int main(void)
             // low three bits from high byte
             whichLED = (randomNumber >> 8) & 0b00000111;
             // toggle LED
-            LED_PORT ^= (1 << whichLED);
+            toggleBit(LED_PORT, whichLED);
             _delay_ms(DELAYTIME);
         }
 
