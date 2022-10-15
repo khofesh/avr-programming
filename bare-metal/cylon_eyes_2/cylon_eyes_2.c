@@ -17,7 +17,6 @@ int main(void)
     {
         while (i < 7)
         {
-            // illuminate only i'th pin
             LED_PORT |= (1 << i);
             _delay_ms(DELAYTIME);
             // next LED

@@ -13,10 +13,6 @@ add your username to `dialout` group
 sudo usermod -aG dialout fahmad
 ```
 
-- https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing
-- https://arduino.github.io/arduino-cli/0.27/
-- https://developer.fedoraproject.org/start/hw/arduino/about.html
-
 ## USBasp
 
 https://www.fischl.de/usbasp/
@@ -170,23 +166,21 @@ avrdude: safemode: Fuses OK (E:FF, H:DE, L:FF)
 avrdude done.  Thank you.
 ```
 
-## 168 and 328
+## Atmega168 and Atmega328
 
-https://docs.arduino.cc/hacking/hardware/Atmega168Hardware
-
-https://docs.arduino.cc/hacking/hardware/ATMEGA328P
-
-https://docs.arduino.cc/hacking/hardware/PinMapping168
+- https://docs.arduino.cc/hacking/hardware/Atmega168Hardware
+- https://docs.arduino.cc/hacking/hardware/ATMEGA328P
+- https://docs.arduino.cc/hacking/hardware/PinMapping168
 
 ## references
 
+- https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing
+- https://arduino.github.io/arduino-cli/0.27/
+- https://developer.fedoraproject.org/start/hw/arduino/about.html
 - https://wiki.archlinux.org/title/Udev
 - https://klamfx.wordpress.com/2017/05/18/geting-usbasp-v2-0-to-work-on-linux/
 - https://forum.arduino.cc/t/usb-asp-not-working-on-linux/248664/5
 - https://blog.podkalicki.com/how-to-update-avr-usbasp-firmware-to-latest-version/
-
-https://www.youtube.com/watch?v=A-6HLM1XL3M
-
-https://www.youtube.com/watch?v=1tU7cAFwzig
-
-https://www.youtube.com/watch?v=ToKerwRR-70
+- https://www.youtube.com/watch?v=A-6HLM1XL3M
+- https://www.youtube.com/watch?v=1tU7cAFwzig
+- https://www.youtube.com/watch?v=ToKerwRR-70
