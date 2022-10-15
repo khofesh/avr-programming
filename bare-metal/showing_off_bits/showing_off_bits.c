@@ -22,14 +22,14 @@ int main(void)
     while (1)
     {
         // go left
-        for (i = 0; i < 7; i++)
+        for (i = 0; i < 8; i++)
         {
             // turn on the i-th pin
             LED_PORT |= (1 << i);
             _delay_ms(DELAYTIME);
         }
 
-        for (i = 0; i < 7; i++)
+        for (i = 0; i < 8; i++)
         {
             // turn off the i-th pin
             LED_PORT &= ~(1 << i);
@@ -37,13 +37,13 @@ int main(void)
         }
         _delay_ms(5 * DELAYTIME);
 
-        for (i = 7; i < 63; i--)
+        for (i = 7; i < 255; i--)
         {
             LED_PORT |= (1 << i);
             _delay_ms(DELAYTIME);
         }
 
-        for (i = 7; i < 63; i--)
+        for (i = 7; i < 255; i--)
         {
             LED_PORT &= ~(1 << i);
             _delay_ms(DELAYTIME);
