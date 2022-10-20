@@ -6,7 +6,7 @@
  *   initUSART requires BAUD to be defined in order to calculate
  *    the bit-rate multiplier.
  */
-#define F_CPU 4000000
+#define F_CPU 16000000UL
 #ifndef BAUD      /* if not defined in Makefile... */
 #define BAUD 9600 /* set a safe default baud rate */
 #endif
@@ -19,32 +19,32 @@
  *   calculates the bit-clock multiplier,
  *   and configures the hardware USART
  */
-void initUSART(void);
+void init_usart(void);
 
 /* Blocking transmit and receive functions.
    When you call receiveByte() your program will hang until
    data comes through.  We'll improve on this later. */
-void transmitByte(uint8_t data);
-uint8_t receiveByte(void);
+void transmit_byte(uint8_t data);
+uint8_t receive_byte(void);
 
-void printString(const char myString[]);
+void print_string(const char myString[]);
 /* Utility function to transmit an entire string from RAM */
-void readString(char myString[], uint8_t maxLength);
+void read_string(char myString[], uint8_t maxLength);
 /* Define a string variable, pass it to this function
    The string will contain whatever you typed over serial */
 
-void printByte(uint8_t byte);
+void print_byte(uint8_t byte);
 /* Prints a byte out as its 3-digit ascii equivalent */
-void printWord(uint16_t word);
+void print_word(uint16_t word);
 /* Prints a word (16-bits) out as its 5-digit ascii equivalent */
 
-void printBinaryByte(uint8_t byte);
+void print_binary_byte(uint8_t byte);
 /* Prints a byte out in 1s and 0s */
-char nibbleToHex(uint8_t nibble);
-char nibbleToHexCharacter(uint8_t nibble);
-void printHexByte(uint8_t byte);
+char nibble_to_hex(uint8_t nibble);
+char nibble_to_hex_character(uint8_t nibble);
+void print_hex_byte(uint8_t byte);
 /* Prints a byte out in hexadecimal */
-uint8_t getNumber(void);
+uint8_t get_number(void);
 /* takes in up to three ascii digits,
  converts them to a byte when press enter */
 

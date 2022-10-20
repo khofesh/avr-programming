@@ -16,13 +16,15 @@ int main(void)
 
     // init
     LED_DDR = 0xff;
-    initUSART();
-    printString("hola mundo!\r\n");
+    init_usart();
+    print_string("hola mundo!\r\n");
 
     while (1)
     {
-        serialCharacter = receiveByte();
-        transmitByte(serialCharacter);
+        serialCharacter = receive_byte();
+        transmit_byte(serialCharacter);
+        // print_binary_byte(serialCharacter);
+        // print_string("\r\n");
         LED_PORT = serialCharacter;
     }
 

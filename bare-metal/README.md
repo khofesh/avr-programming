@@ -77,6 +77,9 @@ make flash_usbasp
 
 - https://github.com/johncobb/avr_328p_usart
 - https://github.com/xanthium-enterprises/atmega328p-serial-uart-to-pc-communication
+- https://www.appelsiini.net/2011/simple-usart-with-avr-libc/
+
+![serial strange result](./images/Screenshot_2022-10-19_23-34-16.png)
 
 # Components
 

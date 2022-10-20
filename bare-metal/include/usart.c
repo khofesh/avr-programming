@@ -2,7 +2,7 @@
 /*
   Quick and dirty functions that make serial communications work.
 
-  Note that receiveByte() blocks -- it sits and waits _forever_ for
+  Note that receive_byte() blocks -- it sits and waits _forever_ for
    a byte to come in.  If you're doing anything that's more interesting,
    you'll want to implement this with interrupts.
 
@@ -20,7 +20,7 @@
 #include "usart.h"
 #include <util/setbaud.h>
 
-void initUSART(void)
+void init_usart(void)
 {                         /* requires BAUD */
     UBRR0H = UBRRH_VALUE; /* defined in setbaud.h */
     UBRR0L = UBRRL_VALUE;
@@ -34,14 +34,14 @@ void initUSART(void)
     UCSR0C = (1 << UCSZ01) | (1 << UCSZ00); /* 8 data bits, 1 stop bit */
 }
 
-void transmitByte(uint8_t data)
+void transmit_byte(uint8_t data)
 {
     /* Wait for empty transmit buffer */
     loop_until_bit_is_set(UCSR0A, UDRE0);
     UDR0 = data; /* send data */
 }
 
-uint8_t receiveByte(void)
+uint8_t receive_byte(void)
 {
     loop_until_bit_is_set(UCSR0A, RXC0); /* Wait for incoming data */
     return UDR0;                         /* return register value */
@@ -49,25 +49,25 @@ uint8_t receiveByte(void)
 
 /* Here are a bunch of useful printing commands */
 
-void printString(const char myString[])
+void print_string(const char myString[])
 {
     uint8_t i = 0;
     while (myString[i])
     {
-        transmitByte(myString[i]);
+        transmit_byte(myString[i]);
         i++;
     }
 }
 
-void readString(char myString[], uint8_t maxLength)
+void read_string(char myString[], uint8_t maxLength)
 {
     char response;
     uint8_t i;
     i = 0;
     while (i < (maxLength - 1))
     { /* prevent over-runs */
-        response = receiveByte();
-        transmitByte(response); /* echo */
+        response = receive_byte();
+        transmit_byte(response); /* echo */
         if (response == '\r')
         { /* enter marks the end */
             break;
@@ -81,37 +81,37 @@ void readString(char myString[], uint8_t maxLength)
     myString[i] = 0; /* terminal NULL character */
 }
 
-void printByte(uint8_t byte)
+void print_byte(uint8_t byte)
 {
     /* Converts a byte to a string of decimal text, sends it */
-    transmitByte('0' + (byte / 100));       /* Hundreds */
-    transmitByte('0' + ((byte / 10) % 10)); /* Tens */
-    transmitByte('0' + (byte % 10));        /* Ones */
+    transmit_byte('0' + (byte / 100));       /* Hundreds */
+    transmit_byte('0' + ((byte / 10) % 10)); /* Tens */
+    transmit_byte('0' + (byte % 10));        /* Ones */
 }
 
-void printWord(uint16_t word)
+void print_word(uint16_t word)
 {
-    transmitByte('0' + (word / 10000));       /* Ten-thousands */
-    transmitByte('0' + ((word / 1000) % 10)); /* Thousands */
-    transmitByte('0' + ((word / 100) % 10));  /* Hundreds */
-    transmitByte('0' + ((word / 10) % 10));   /* Tens */
-    transmitByte('0' + (word % 10));          /* Ones */
+    transmit_byte('0' + (word / 10000));       /* Ten-thousands */
+    transmit_byte('0' + ((word / 1000) % 10)); /* Thousands */
+    transmit_byte('0' + ((word / 100) % 10));  /* Hundreds */
+    transmit_byte('0' + ((word / 10) % 10));   /* Tens */
+    transmit_byte('0' + (word % 10));          /* Ones */
 }
 
-void printBinaryByte(uint8_t byte)
+void print_binary_byte(uint8_t byte)
 {
     /* Prints out a byte as a series of 1's and 0's */
     uint8_t bit;
     for (bit = 7; bit < 255; bit--)
     {
         if (bit_is_set(byte, bit))
-            transmitByte('1');
+            transmit_byte('1');
         else
-            transmitByte('0');
+            transmit_byte('0');
     }
 }
 
-char nibbleToHexCharacter(uint8_t nibble)
+char nibble_to_hex_character(uint8_t nibble)
 {
     /* Converts 4 bits into hexadecimal */
     if (nibble < 10)
@@ -124,17 +124,17 @@ char nibbleToHexCharacter(uint8_t nibble)
     }
 }
 
-void printHexByte(uint8_t byte)
+void print_hex_byte(uint8_t byte)
 {
     /* Prints a byte as its hexadecimal equivalent */
     uint8_t nibble;
     nibble = (byte & 0b11110000) >> 4;
-    transmitByte(nibbleToHexCharacter(nibble));
+    transmit_byte(nibble_to_hex_character(nibble));
     nibble = byte & 0b00001111;
-    transmitByte(nibbleToHexCharacter(nibble));
+    transmit_byte(nibble_to_hex_character(nibble));
 }
 
-uint8_t getNumber(void)
+uint8_t get_number(void)
 {
     // Gets a numerical 0-255 from the serial port.
     // Converts from string to number.
@@ -147,8 +147,8 @@ uint8_t getNumber(void)
         hundreds = tens;
         tens = ones;
         ones = thisChar;
-        thisChar = receiveByte(); /* get a new character */
-        transmitByte(thisChar);   /* echo */
-    } while (thisChar != '\r');   /* until type return */
+        thisChar = receive_byte(); /* get a new character */
+        transmit_byte(thisChar);   /* echo */
+    } while (thisChar != '\r');    /* until type return */
     return (100 * (hundreds - '0') + 10 * (tens - '0') + ones - '0');
 }
