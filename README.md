@@ -172,6 +172,10 @@ avrdude done.  Thank you.
 - https://docs.arduino.cc/hacking/hardware/ATMEGA328P
 - https://docs.arduino.cc/hacking/hardware/PinMapping168
 
+differences between processors
+
+![differences](./images/Screenshot_2022-10-21_00-31-55.png)
+
 ## references
 
 - https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing
